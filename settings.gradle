@@ -1,0 +1,2 @@
+rootProject.name='Programmeren7'
+include ':app'
