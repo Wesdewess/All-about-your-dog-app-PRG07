@@ -8,10 +8,7 @@
     tools:context=".Ontworming"
     tools:showIn="@layout/activity_ontworming">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
-
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </androidx.core.widget.NestedScrollView>
