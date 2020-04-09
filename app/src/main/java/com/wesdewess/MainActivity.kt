@@ -16,9 +16,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openMap(v: View?) {
-        val toast = Toast.makeText(applicationContext, "Yo man", Toast.LENGTH_SHORT)
-        toast.show()
+
         startActivity(Intent(this@MainActivity, MapsActivity::class.java))
-        Log.d("user_action","maps button clicked")
+
+    }
+    fun openOntworming(v: View?) {
+
+        startActivity(Intent(this@MainActivity, Ontworming::class.java))
+
     }
 }
