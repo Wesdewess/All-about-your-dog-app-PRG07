@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.database.Cursor
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_ontworming.*
@@ -15,13 +16,16 @@ class Ontworming : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ontworming)
         setSupportActionBar(toolbar)
+        fab.setOnClickListener {
+            showForm()
+        }
 
         dayaDatabase = DatabaseHelper(this);
 
         val res: Cursor = dayaDatabase!!.allData
         if (res.count == 0) {
             // show message
-            showMessage("Error", "Nothing found")
+            showList("Error", "Nothing found")
             return
         }
 
@@ -45,37 +49,37 @@ class Ontworming : AppCompatActivity() {
                     
                     """.trimIndent()
             )
-            buffer.append(
-                """
-                    Marks :${res.getString(3).toString()}
-                    
-                    
-                    """.trimIndent()
-            )
         }
 
         // Show all data
-        showMessage("Data", buffer.toString())
+        showList("Items in database",buffer.toString())
     }
-    private fun showMessage(title: String?, Message: String?) {
+    private fun showList(title:String,data:String){
+        val builder = AlertDialog.Builder(this)
+        builder.setCancelable(true)
+        builder.setTitle(title)
+        builder.setMessage(data)
+        builder.show()
+    }
+    private fun showForm() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         val inflater: LayoutInflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.form_ontworming_toevoegen,null)
+        builder.setView(dialogView)
 
-        // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.form_ontworming_toevoegen, null))
         // Add action buttons
         builder.apply {
             setPositiveButton(R.string.add
             ) { dialog, id ->
-                addEntry()
+                addEntry(dialogView.findViewById<EditText>(R.id.username).text.toString(), dialogView.findViewById<EditText>(R.id.password).text.toString())
+
             }
             setNegativeButton(R.string.cancel
             ) { dialog, id ->
                 // User cancelled the dialog
             }
         }
-        builder.show()
+        builder.create().show()
     }
 
     private fun addEntry(value1:String, value2:String) {
