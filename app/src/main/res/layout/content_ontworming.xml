@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Ontworming"
     tools:showIn="@layout/activity_ontworming">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <ListView
+        android:id="@+id/ListView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/design_default_color_background"
+        android:layout_alignParentBottom="true"/>
+
 </androidx.core.widget.NestedScrollView>
