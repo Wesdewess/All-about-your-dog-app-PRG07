@@ -117,4 +117,6 @@
     <string name="action_settings">Settings</string>
     <string name="add">Toevoegen</string>
     <string name="cancel">annuleren</string>
+    <string name="days_ago">dagen geleden</string>
+    <string name="days_since_last_ontw">Dagen sinds laatste ontworming:</string>
 </resources>
