@@ -41,12 +41,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/voedingbutton"
+        android:id="@+id/weatherbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="69dp"
         android:layout_marginBottom="52dp"
-        android:text="@string/food"
+        android:text="@string/niceweather"
         app:layout_constraintBottom_toTopOf="@+id/ontwormviewbutton"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -77,6 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="53dp"
+        android:onClick="openSettings"
         android:text="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
