@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
@@ -12,6 +13,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.squareup.picasso.Picasso
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val queue = Volley.newRequestQueue(this)
-        
+
         // make request
         // Request a string response from the provided URL.
         val jsonObjectRequest = JsonObjectRequest(
@@ -72,9 +74,18 @@ class MainActivity : AppCompatActivity() {
 
             Log.d(LOG_TAG, resultURL)
 
+            loadImage(resultURL)
+
         } catch (e: JSONException) {
             e.printStackTrace()
             Log.d(LOG_TAG, "Error processing JSON")
         }
+    }
+
+    private fun loadImage(url: String?) {
+        val imageView: ImageView = findViewById(R.id.imageView)
+
+        //Loading image using Picasso
+        Picasso.get().load(url).into(imageView)
     }
 }
