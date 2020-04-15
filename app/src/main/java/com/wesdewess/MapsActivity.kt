@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -58,7 +59,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         Toast.makeText(this, location.latitude.toString()+" "+ location.longitude.toString(), Toast.LENGTH_LONG).show()
                         // Add a marker at user location
                         val yourLocation = LatLng(location.latitude,location.longitude)
-                        mMap.addMarker(MarkerOptions().position(yourLocation).title("U bevind zich hier"))
+                        mMap.addMarker(MarkerOptions().position(yourLocation).title("U bevind zich hier").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)))
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(yourLocation, 10F))
                     }
                 }
