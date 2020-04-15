@@ -23,71 +23,53 @@
         android:id="@+id/mapsbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginBottom="267dp"
         android:onClick="openMap"
         android:text="@string/open_map"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="22dp"
         android:text="@string/about_daya"
-        app:layout_constraintBottom_toTopOf="@+id/mapsbutton"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/weatherbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="52dp"
-        android:text="@string/niceweather"
         app:layout_constraintBottom_toTopOf="@+id/ontwormviewbutton"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/ontwormviewbutton" />
 
     <Button
         android:id="@+id/ontwormviewbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="37dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="26dp"
         android:onClick="openOntworming"
         android:text="@string/ontworming"
-        app:layout_constraintBottom_toBottomOf="@+id/mapsbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mapsbutton" />
-
-    <Button
-        android:id="@+id/fleesbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="37dp"
-        android:text="@string/ontvlooien"
-        app:layout_constraintStart_toStartOf="@+id/ontwormviewbutton"
-        app:layout_constraintTop_toBottomOf="@+id/ontwormviewbutton" />
+        app:layout_constraintBottom_toTopOf="@+id/mapsbutton"
+        app:layout_constraintEnd_toEndOf="@+id/mapsbutton" />
 
     <Button
         android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="53dp"
+        android:layout_marginBottom="49dp"
         android:onClick="openSettings"
         android:text="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="435dp" />
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/about"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
