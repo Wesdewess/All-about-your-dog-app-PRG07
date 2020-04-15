@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Programmeren7</string>
     <string name="title_activity_maps">Kaart</string>
-    <string name="open_map">Woonlocatie</string>
+    <string name="open_map">Uitlaat locaties</string>
     <string name="about_daya">Gegevens</string>
     <string name="niceweather">Zal ik mijn hond uitlaten?</string>
     <string name="title">Alles over uw hond</string>
