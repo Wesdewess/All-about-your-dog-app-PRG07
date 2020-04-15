@@ -10,7 +10,7 @@ class DateHandler {
 
     private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("d-M-yyyy", Locale.ENGLISH)
 
-    fun formatDateFromString(date: String?): LocalDate{
+    private fun formatDateFromString(date: String?): LocalDate{
         return LocalDate.parse(date, formatter)
     }
 

@@ -40,6 +40,7 @@ class DatabaseHelper(context: Context?) :SQLiteOpenHelper(context, DATABASE_NAME
             date["ID"] = cursor.getString(cursor.getColumnIndex(COL_1))
             date["DATE"] = cursor.getString(cursor.getColumnIndex(COL_2))
             dateList.add(date)
+
         }
 
         return dateList
