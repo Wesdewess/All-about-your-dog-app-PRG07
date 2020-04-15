@@ -14,44 +14,30 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.squareup.picasso.Picasso
-import org.json.JSONException
-import org.json.JSONObject
 
+const val LOG_TAG = "dog_app"
+const val DOG_URI = "https://dog.ceo/api/breeds/image/random"
 
 class MainActivity : AppCompatActivity() {
-    val LOG_TAG = "wessel"
-    private val DOG_URI = "https://dog.ceo/api/breeds/image/random"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        val queue = Volley.newRequestQueue(this)
-
-        // make request
-        // Request a string response from the provided URL.
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET,
-            DOG_URI,
-            null,
-            Response.Listener { response -> // TODO: Handle response
-                Log.d(LOG_TAG, "Success fetching JSON")
-                processData(response!!)
-            },
-            Response.ErrorListener { // TODO: Handle error
-                Log.d(LOG_TAG, "Error fetching JSON")
-            })
-        queue.add(jsonObjectRequest);
+        findImage()
+        Log.d(LOG_TAG, "created main activity")
     }
 
     @SuppressLint("SetTextI18n")
     override fun onResume() {
         super.onResume()
-        val dogname = PreferenceManager.getDefaultSharedPreferences(this).getString("dogname", "")
-        if (!dogname.equals("")) {
-            findViewById<TextView>(R.id.textView).text = resources.getString(R.string.titlepart) + " " + dogname
+
+        //change title to dogname set by user in the settings
+        val dogname = PreferenceManager.getDefaultSharedPreferences(this).getString("dogname", "") //find value set in preferences
+        if (!dogname.equals("")) { //if dogname is set
+            findViewById<TextView>(R.id.textView).text = resources.getString(R.string.titlepart) + " " + dogname //custom title
         } else {
-            findViewById<TextView>(R.id.textView).text = resources.getString(R.string.title)
+            findViewById<TextView>(R.id.textView).text = resources.getString(R.string.title) //default title
         }
     }
 
@@ -68,24 +54,28 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
     }
 
-    fun processData(data: JSONObject) {
-        try {
-            val resultURL = data["message"] as String
-
-            Log.d(LOG_TAG, resultURL)
-
-            loadImage(resultURL)
-
-        } catch (e: JSONException) {
-            e.printStackTrace()
-            Log.d(LOG_TAG, "Error processing JSON")
-        }
+    //fetch a random image from dog api
+    private fun findImage(){
+        //request image from dog api
+        Log.d(LOG_TAG, "finding image...")
+        val queue = Volley.newRequestQueue(this)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET,
+            DOG_URI,
+            null,
+            Response.Listener { response -> // TODO: Handle response
+                Log.d(LOG_TAG, "Success fetching JSON")
+                loadImageToView(response["message"] as String, findViewById(R.id.imageView))
+            },
+            Response.ErrorListener { // TODO: Handle error
+                Log.d(LOG_TAG, "Error fetching JSON")
+            })
+        queue.add(jsonObjectRequest);
     }
 
-    private fun loadImage(url: String?) {
-        val imageView: ImageView = findViewById(R.id.imageView)
-
-        //Loading image using Picasso
-        Picasso.get().load(url).into(imageView)
+    //load an image onto an imageview
+    private fun loadImageToView(url:String, iView: ImageView){
+            Log.d(LOG_TAG, url) //log the url
+            Picasso.get().load(url).into(iView) //Load image using Picasso
     }
 }
