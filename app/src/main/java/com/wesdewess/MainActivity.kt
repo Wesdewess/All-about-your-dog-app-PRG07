@@ -19,7 +19,7 @@ import com.android.volley.toolbox.Volley
 import com.squareup.picasso.Picasso
 
 const val LOG_TAG = "dog_app"
-const val DOG_URI = "https://dog.ceo/api/breeds/image/random"
+const val RANDOM_URI = "https://dog.ceo/api/breeds/image/random"
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findImage()
         Log.d(LOG_TAG, "created main activity")
     }
 
@@ -45,6 +44,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     //open the map activity
+    fun openAbout(v: View?) {
+
+        startActivity(Intent(this@MainActivity, About::class.java))
+    }
+    //open the map activity
     fun openMap(v: View?) {
 
         startActivity(Intent(this@MainActivity, MapsActivity::class.java))
@@ -58,28 +62,5 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
     }
 
-    //fetch a random image from dog api
-    private fun findImage(){
-        //request image from dog api
-        Log.d(LOG_TAG, "finding image...")
-        val queue = Volley.newRequestQueue(this)
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET,
-            DOG_URI,
-            null,
-            Response.Listener { response -> // TODO: Handle response
-                Log.d(LOG_TAG, "Success fetching JSON")
-                loadImageToView(response["message"] as String, findViewById(R.id.imageView))
-            },
-            Response.ErrorListener { // TODO: Handle error
-                Log.d(LOG_TAG, "Error fetching JSON")
-            })
-        queue.add(jsonObjectRequest);
-    }
 
-    //load an image onto an imageview
-    private fun loadImageToView(url:String, iView: ImageView){
-            Log.d(LOG_TAG, url) //log the url
-            Picasso.get().load(url).into(iView) //Load image using Picasso
-    }
 }
