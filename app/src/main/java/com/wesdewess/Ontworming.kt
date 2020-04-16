@@ -45,7 +45,7 @@ class Ontworming : AppCompatActivity() {
         // Add action buttons
         builder.apply {
             setPositiveButton(R.string.add
-            ) { dialog, id ->
+            ) { _, _ ->
                 val input = dialogView.findViewById<DatePicker>(R.id.dateInput)
                 val addedDate = input.dayOfMonth.toString()+"-"+(input.month+1).toString()+"-"+input.year
 
@@ -55,7 +55,7 @@ class Ontworming : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
             setNegativeButton(R.string.cancel
-            ) { dialog, id ->
+            ) { _, _ ->
                 // User cancelled the dialog
             }
         }
