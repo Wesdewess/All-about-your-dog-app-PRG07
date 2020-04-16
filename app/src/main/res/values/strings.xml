@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Programmeren7</string>
+    <string name="app_name">Alles over uw hond</string>
     <string name="title_activity_maps">Kaart</string>
     <string name="open_map">Uitlaat locaties</string>
     <string name="about_daya">Gegevens</string>
@@ -13,11 +13,11 @@
 
     <!-- Preference Titles -->
     <string name="settings_header">Instellingen</string>
-    <string name="sync_header">Sync</string>
+    <string name="sync_header" translatable="false">Sync</string>
 
     <!-- Messages Preferences -->
     <string name="dogname_title">Hoe heet uw hond?</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
 
     <string name="title_activity_ontworming">Ontworming</string>
     <string name="action_settings">Instellingen</string>
@@ -25,4 +25,6 @@
     <string name="cancel">annuleren</string>
     <string name="days_ago">dagen geleden</string>
     <string name="days_since_last_ontw">Dagen sinds laatste ontworming:</string>
+    <string name="walk">Plek om te wandelen</string>
+    <string name="youarehere">U bent hier</string>
 </resources>
