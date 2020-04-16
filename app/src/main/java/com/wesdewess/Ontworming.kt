@@ -15,12 +15,13 @@ import kotlin.collections.ArrayList
 
 
 class Ontworming : AppCompatActivity() {
-
+    //define date handler to manage date formats
     private var dateHandler: DateHandler = DateHandler()
+    //which database to use
     private var dayaDatabase: DatabaseHelper? = null //define which databaseHelper to use
-
-
+    //this list will be used to show dates in
     private val list = ArrayList<String?>()
+    //adapter for the listview
     private lateinit var adapter: ArrayAdapter<String?>
 
     //all that happens when creating the Activity
@@ -36,6 +37,7 @@ class Ontworming : AppCompatActivity() {
         makeList()
     }
 
+    //build dialog containing a date-picker. date will be stored in SQLite database
     private fun showForm() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         val inflater: LayoutInflater = layoutInflater
@@ -46,6 +48,7 @@ class Ontworming : AppCompatActivity() {
         builder.apply {
             setPositiveButton(R.string.add
             ) { _, _ ->
+                //user confirmed dialog
                 val input = dialogView.findViewById<DatePicker>(R.id.dateInput)
                 val addedDate = input.dayOfMonth.toString()+"-"+(input.month+1).toString()+"-"+input.year
 
@@ -80,25 +83,20 @@ class Ontworming : AppCompatActivity() {
     }
 
     private fun makeList(){
-
+        //find the correct view to add the list to
         val listView = findViewById<ListView>(R.id.ListView)
+        //get data from database
         val values = dayaDatabase!!.getDates()
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
 
         list.add(0, resources.getString(R.string.days_since_last_ontw) + " " + dateHandler.compareToCurrentDate(values))
 
+        //add all items to list and compare dates to current date
         if (values != null) {
             for (element in values) {
                 list.add(1,element["DATE"] + "  -  " + dateHandler.compareToCurrentDate(element["DATE"]).toString() + " " + resources.getString(R.string.days_ago))
             }
         }
-
         listView.adapter = adapter
-
-        Toast.makeText(
-            this@Ontworming,
-            "Days since last ontworming: " + dateHandler.compareToCurrentDate(values),
-            Toast.LENGTH_LONG
-        ).show()
     }
 }
