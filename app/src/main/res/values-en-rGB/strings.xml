@@ -21,4 +21,9 @@
     <string name="ontvlooien">De-fleeing</string>
     <string name="walk">Place to walk the dog</string>
     <string name="youarehere">You are here</string>
+    <string name="dograce_title">What race is your dog?</string>
+    <string name="dogage_title">What is your dog\'s age?</string>
+    <string name="dogname">Dog name</string>
+    <string name="dogage">Dog age</string>
+    <string name="dograce">Dog race</string>
 </resources>

@@ -27,4 +27,10 @@
     <string name="days_since_last_ontw">Dagen sinds laatste ontworming:</string>
     <string name="walk">Plek om te wandelen</string>
     <string name="youarehere">U bent hier</string>
+    <string name="dograce_title">Het ras van uw hond</string>
+    <string name="dogage_title">Hoe oud is uw hond?</string>
+    <string name="dogname">Naam van uw hond</string>
+    <string name="dogage">Leeftijd van uw hond</string>
+    <string name="dograce">Ras van uw hond</string>
+    <string name="placeholder" translatable="false">placeholder</string>
 </resources>
