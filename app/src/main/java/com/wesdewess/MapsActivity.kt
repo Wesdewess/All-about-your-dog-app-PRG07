@@ -43,8 +43,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         getLastLocation()
+        val parks = arrayListOf(LatLng(51.987770, 4.324002),LatLng(51.980670, 4.320208),LatLng(51.974030, 4.336983),LatLng(51.968995, 4.280606))
+        addParkMarkers(parks)
     }
 
+    private fun addParkMarkers(coords: ArrayList<LatLng>){
+        for (x in coords)
+        mMap.addMarker(MarkerOptions().position(x).title(resources.getString(R.string.walk)).icon(BitmapDescriptorFactory.fromResource(R.drawable.tree)))
+    }
 
     @SuppressLint("MissingPermission")
     private fun getLastLocation() {
@@ -59,8 +65,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         Toast.makeText(this, location.latitude.toString()+" "+ location.longitude.toString(), Toast.LENGTH_LONG).show()
                         // Add a marker at user location
                         val yourLocation = LatLng(location.latitude,location.longitude)
-                        mMap.addMarker(MarkerOptions().position(yourLocation).title("U bevind zich hier").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)))
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(yourLocation, 10F))
+                        mMap.addMarker(MarkerOptions().position(yourLocation).title(resources.getString(R.string.youarehere)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(yourLocation, 13F))
                     }
                 }
             } else {
