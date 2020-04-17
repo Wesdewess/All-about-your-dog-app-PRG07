@@ -54,7 +54,8 @@ class Ontworming : AppCompatActivity() {
 
                 addEntry(addedDate)
                 list.add(1,addedDate + "  -  " + dateHandler.compareToCurrentDate(addedDate).toString() + " " + resources.getString(R.string.days_ago))
-
+                list.removeAt(0)
+                list.add(0, resources.getString(R.string.days_since_last_ontw) + " " + dateHandler.compareToCurrentDate(addedDate))
                 adapter.notifyDataSetChanged()
             }
             setNegativeButton(R.string.cancel
