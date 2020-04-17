@@ -43,17 +43,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         getLastLocation()
+
+        //add parks to map
         val parks = arrayListOf(LatLng(51.987770, 4.324002),LatLng(51.980670, 4.320208),LatLng(51.974030, 4.336983),LatLng(51.968995, 4.280606))
         addParkMarkers(parks)
     }
 
     private fun addParkMarkers(coords: ArrayList<LatLng>){
+        //run through the array to add all markers
         for (x in coords)
         mMap.addMarker(MarkerOptions().position(x).title(resources.getString(R.string.walk)).icon(BitmapDescriptorFactory.fromResource(R.drawable.tree)))
     }
 
     @SuppressLint("MissingPermission")
     private fun getLastLocation() {
+        //check if there is permission and gps is enabled, then get user location
         if (checkPermissions()) {
             if (isLocationEnabled()) {
 
@@ -100,6 +104,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    //check if the user enabled GPS
     private fun isLocationEnabled(): Boolean {
         val locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
@@ -107,6 +112,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         )
     }
 
+    //check if you already have permission
     private fun checkPermissions(): Boolean {
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -122,6 +128,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return false
     }
 
+    //make a request to the user
     private fun requestPermissions() {
         ActivityCompat.requestPermissions(
             this,
@@ -130,7 +137,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         )
     }
 
-
+    //if you give permission, get location
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == PERMISSION_ID) {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
